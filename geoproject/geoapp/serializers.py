@@ -14,6 +14,16 @@ class OperatorSerializer(serializers.ModelSerializer):
         model = Operator
         fields = ['id', 'name']
 
+class AircraftModelSeralizer(serializers.ModelSerializer):
+    operator = OperatorSerializer()
+    hoge = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Aircraft
+        fields = ['r_id', 'operator','hoge']
+
+    def get_hoge(self, obj):
+        return self.context.get('hoge')
 
 class AircraftLocationSerializer(serializers.ModelSerializer):
     class Meta:
