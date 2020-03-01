@@ -1,5 +1,7 @@
 #from django.db import models
 from django.contrib.gis.db import models as models
+from django.contrib.auth.models import PermissionsMixin, UserManager
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
@@ -27,3 +29,7 @@ class AircraftLoacation(models.Model):
     aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE)
     report = models.DateTimeField()
     geom = models.PointField(srid = 4326)
+
+
+class User(AbstractUser):
+    pass
